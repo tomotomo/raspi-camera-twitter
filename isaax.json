@@ -1,0 +1,11 @@
+{
+	"name": "raspi-camera-twitter",
+	"version": "0.1",
+	"description": "SIerIoTLT用のデモ",
+	"author": "tomotomo",
+	"license": "MIT License",
+	"language": "",
+	"scripts": {
+		"start": "python main.py"
+	}
+}
