@@ -2,6 +2,7 @@ import os
 import sys
 import json
 from requests_oauthlib import OAuth1Session
+from datetime import datetime
 
 ###
 # 参考にした記事
