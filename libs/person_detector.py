@@ -62,6 +62,7 @@ class PersonDetector(object):
             persons += 1
 
         if persons > 0:
+            print("There are persons.")
             upload()
 
         return frame
