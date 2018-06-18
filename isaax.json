@@ -6,6 +6,6 @@
 	"license": "MIT License",
 	"language": "",
 	"scripts": {
-		"start": "python3 main.py"
+		"start": "python3 -u main.py"
 	}
 }
