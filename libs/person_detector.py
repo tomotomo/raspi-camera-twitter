@@ -7,7 +7,7 @@ import datetime
 import numpy as np
 import cv2
 # twiter uploader
-from twitter_notification import upload
+from .twitter_notification import upload
 
 net = cv2.dnn.readNetFromCaffe('/home/pi/MobileNetSSD_deploy.prototxt',
         '/home/pi/MobileNetSSD_deploy.caffemodel')
@@ -17,6 +17,7 @@ class PersonDetector(object):
     def __init__(self, flip = True):
         self.vs = PiVideoStream(resolution=(640, 480)).start()
         self.flip = flip
+        self.last_uploaded = datetime.now()
         time.sleep(2.0)
         
     def __del__(self):
