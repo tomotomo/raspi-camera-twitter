@@ -23,8 +23,6 @@ url_media = "https://upload.twitter.com/1.1/media/upload.json"
 url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
 def upload(persons):
-    print("upload success")
-    return 0
 
     # OAuth認証 セッションを開始
     twitter = OAuth1Session(CK, CS, AT, AS)
