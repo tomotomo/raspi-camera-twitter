@@ -4,3 +4,4 @@ picamera[array]
 flask
 imutils
 pyzbar
+requests_oauthlib
