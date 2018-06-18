@@ -6,7 +6,8 @@ import time
 import datetime
 import numpy as np
 import cv2
-
+# twiter uploader
+from twitter_notification import upload
 
 net = cv2.dnn.readNetFromCaffe('/home/pi/MobileNetSSD_deploy.prototxt',
         '/home/pi/MobileNetSSD_deploy.caffemodel')
@@ -32,6 +33,7 @@ class PersonDetector(object):
         return jpeg.tobytes()
 
     def process_image(self, frame):
+        persons = 0
         frame = imutils.resize(frame, width=300)
         (h, w) = frame.shape[:2]
         blob = cv2.dnn.blobFromImage(frame, 0.007843, (300, 300), 127.5)
@@ -41,10 +43,12 @@ class PersonDetector(object):
         for i in np.arange(0, detections.shape[2]):
             confidence = detections[0, 0, i, 2]
 
-            if confidence < 0.2:
+            # 認識した物体の確からしさ
+            if confidence < 0.5:
                 continue
 
             idx = int(detections[0, 0, i, 1])
+            # 15は人
             if idx != 15:
                 continue
 
@@ -54,5 +58,9 @@ class PersonDetector(object):
             cv2.rectangle(frame, (startX, startY), (endX, endY), (0, 255, 0), 2)
             y = startY - 15 if startY - 15 > 15 else startY + 15
             cv2.putText(frame, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+            persons += 1
+
+        if persons > 0:
+            upload()
 
         return frame
