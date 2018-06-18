@@ -1,7 +1,23 @@
 # raspi-camera-twitter
 Shoot a photo and post in Twitter
 
-# pre-install script
+## Requirements
+
+* Raspberry Pi 3B(+)
+* Camera Mobule
+* Python 3
+
+## Download Models
+
+```bash
+cd /home/pi
+wget https://github.com/chuanqi305/MobileNet-SSD/raw/master/MobileNetSSD_deploy.caffemodel
+wget https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/master/MobileNetSSD_deploy.prototxt
+```
+
+## Script Services
+
+### pre-install script
 
 user: root
 timeout: 0
@@ -22,7 +38,7 @@ apt install -y python3-dev python3-pip
 pip3 install numpy opencv-python picamera[array] flask imutils pyzbar
 ```
 
-# post-update script
+### post-update script
 
 user: root
 timeout: 0

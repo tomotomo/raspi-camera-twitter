@@ -8,13 +8,13 @@ import numpy as np
 import cv2
 
 
-net = cv2.dnn.readNetFromCaffe('/home/pi/models/MobileNetSSD_deploy.prototxt',
-        '/home/pi/models/MobileNetSSD_deploy.caffemodel')
+net = cv2.dnn.readNetFromCaffe('/home/pi/MobileNetSSD_deploy.prototxt',
+        '/home/pi/MobileNetSSD_deploy.caffemodel')
 
 
 class PersonDetector(object):
     def __init__(self, flip = True):
-        self.vs = PiVideoStream(resolution=(800, 608)).start()
+        self.vs = PiVideoStream(resolution=(640, 480)).start()
         self.flip = flip
         time.sleep(2.0)
         
