@@ -22,9 +22,9 @@ url_media = "https://upload.twitter.com/1.1/media/upload.json"
 url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
 def upload():
-    print "upload success"
+    print("upload success")
     return 0
-    
+
     # OAuth認証 セッションを開始
     twitter = OAuth1Session(CK, CS, AT, AS)
 
@@ -34,12 +34,12 @@ def upload():
 
     # レスポンスを確認
     if req_media.status_code != 200:
-        print ("画像アップデート失敗: %s", req_media.text)
+        print("画像アップデート失敗: %s", req_media.text)
         sys.exit(1)
 
     # Media ID を取得
     media_id = json.loads(req_media.text)['media_id']
-    print ("Media ID: %d" % media_id)
+    print("Media ID: %d" % media_id)
 
     # Media ID を付加してテキストを投稿
     params = {'status': '人がN人写ってるっぽいね〜', "media_ids": [media_id]}
@@ -47,7 +47,7 @@ def upload():
 
     # 再びレスポンスを確認
     if req_media.status_code != 200:
-        print ("テキストアップデート失敗: %s", req_text.text)
+        print("テキストアップデート失敗: %s", req_text.text)
         sys.exit(1)
 
-    print ("Uploaded")
+    print("Uploaded")
