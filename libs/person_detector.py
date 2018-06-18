@@ -61,6 +61,7 @@ class PersonDetector(object):
             cv2.putText(frame, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
             persons += 1
 
+        print(persons)
         if persons > 0:
             print("There are persons.")
             upload()
