@@ -1,7 +1,6 @@
 from flask import Flask, render_template, Response
-from processor.simple_streamer import SimpleStreamer as VideoCamera
-# from processor.motion_detector import MotionDetector as VideoCamera
-# from processor.person_detector import PersonDetector as VideoCamera
+from lib.simple_streamer import SimpleStreamer as VideoCamera
+# from lib.person_detector import PersonDetector as VideoCamera
 
 import time
 import threading
