@@ -16,7 +16,7 @@ class SimpleStreamer(object):
 
     def flip_if_needed(self, frame):
         if self.flip:
-            return np.flip(frame, 0)
+            return np.flip(frame, 1)
         return frame
 
     def get_frame(self):
