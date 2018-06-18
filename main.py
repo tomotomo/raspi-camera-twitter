@@ -5,7 +5,8 @@ from libs.simple_streamer import SimpleStreamer as VideoCamera
 import time
 import threading
 
-video_camera = VideoCamera(flip=False)
+# 鏡像にするときは True
+video_camera = VideoCamera(flip=True)
 
 
 app = Flask(__name__)
