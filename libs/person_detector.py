@@ -22,8 +22,7 @@ class PersonDetector(object):
         self.vs.stop()
 
     def flip_if_needed(self, frame):
-        if self.flip:
-            return np.flip(frame, 0)
+        # PersonDetectorはFlipしない
         return frame
 
     def get_frame(self):
