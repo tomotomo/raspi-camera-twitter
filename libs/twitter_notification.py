@@ -22,7 +22,7 @@ except KeyError as e:
 url_media = "https://upload.twitter.com/1.1/media/upload.json"
 url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
-def upload():
+def upload(persons):
     print("upload success")
     return 0
 
@@ -43,7 +43,7 @@ def upload():
     print("Media ID: %d" % media_id)
 
     # Media ID を付加してテキストを投稿
-    params = {'status': '人がN人写ってるっぽいね〜', "media_ids": [media_id]}
+    params = {'status': '人が{}人写ってるっぽいね〜'.format(persons), "media_ids": [media_id]}
     req_media = twitter.post(url_text, params = params)
 
     # 再びレスポンスを確認
