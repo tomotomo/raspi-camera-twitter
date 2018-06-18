@@ -63,11 +63,11 @@ class PersonDetector(object):
 
         if persons > 0:
             timestamp = datetime.now()
-            if (timestamp - last_uploaded).seconds >= 30:
+            if (timestamp - self.last_uploaded).seconds >= 30:
                 cv2.imwrite("image.jpg", frame)
                 print('Uploading...')
                 upload(persons)
-                last_uploaded = timestamp
+                self.last_uploaded = timestamp
                 print('Finished.')
 
         return frame
