@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import datetime
 from requests_oauthlib import OAuth1Session
 
 ###
@@ -41,7 +42,8 @@ def upload(persons):
     print("Media ID: %d" % media_id)
 
     # Media ID を付加してテキストを投稿
-    params = {'status': '人が{}人写ってるっぽいね〜 #iotlt #isaax'.format(persons), "media_ids": [media_id]}
+    now = datetime.datetime.now()
+    params = {'status': '{}現在、人が{}人写ってるっぽいね〜 #iotlt #isaax'.format(now.strftime('%H:%M:%S'),persons), "media_ids": [media_id]}
     req_media = twitter.post(url_text, params = params)
 
     # 再びレスポンスを確認
