@@ -44,5 +44,5 @@ user: root
 timeout: 0
 
 ```bash
-pip3 install -r requirements.txt
+pip3 install -r /var/isaax/project/requirements.txt
 ```
