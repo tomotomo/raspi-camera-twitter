@@ -2,13 +2,13 @@
 from flask import Flask, render_template, Response
 # from libs.simple_streamer import SimpleStreamer as VideoCamera
 # from libs.person_detector import PersonDetector as VideoCamera
-from libs.agender_detector import SimpleStreamer as VideoCamera
+from libs.smile_detector import SimpleStreamer as VideoCamera
 
 import time
 import threading
 
 # 鏡像にするときは True
-video_camera = VideoCamera(flip=True)
+video_camera = VideoCamera(flip=False)
 
 
 app = Flask(__name__)

@@ -13,6 +13,9 @@ Shoot a photo and post in Twitter
 cd /home/pi
 wget https://github.com/chuanqi305/MobileNet-SSD/raw/master/MobileNetSSD_deploy.caffemodel
 wget https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/master/MobileNetSSD_deploy.prototxt
+cd {project}/haarcascades
+wget https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml
+wget https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_smile.xml
 ```
 
 ## Script Services
@@ -45,4 +48,11 @@ timeout: 0
 
 ```bash
 pip3 install -r /var/isaax/project/requirements.txt
+```
+
+
+## Use Agender
+
+```bash
+pip install py-agender
 ```
