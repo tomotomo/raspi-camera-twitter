@@ -18,6 +18,8 @@ class SimpleStreamer(object):
     def __init__(self, flip = True):
         self.vs = PiVideoStream(resolution=(800, 608)).start()
         self.flip = flip
+        self.smilen = 0
+        self.is_sent = True
         time.sleep(2.0)
 
         # opencvの顔分類器(CascadeClassifier)をインスタンス化する
@@ -36,6 +38,13 @@ class SimpleStreamer(object):
         frame = self.flip_if_needed(self.vs.read())
         frame = self.process_image(frame)
         ret, jpeg = cv2.imencode('.jpg', frame)
+
+        sec = datetime.datetime.now().second
+        if (sec%10!=0):
+            self.is_sent = False
+        elif sec%10==0 and self.is_sent==False:
+            self.is_sent = self.post_to_ambient()
+
         return jpeg.tobytes()
 
     def process_image(self, frame):
@@ -86,6 +95,7 @@ class SimpleStreamer(object):
                     cv2.LINE_AA,
                     False
                 )
+                self.smilen+=len(smiles)
 
             # Smile lv2
             if len(smiles)>1:
@@ -93,3 +103,11 @@ class SimpleStreamer(object):
 
         # frameを戻り値として返す
         return frame
+    
+    def post_to_ambient(self):
+        print('Post {} smiles.'.format(str(self.smilen)))
+
+        self.is_sent = True
+        self.smilen = 0
+
+        return True
