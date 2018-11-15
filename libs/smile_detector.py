@@ -71,19 +71,24 @@ class SimpleStreamer(object):
                 flags=cv2.CASCADE_SCALE_IMAGE
             )
             
-            for (x, y, w, h) in smiles:
-                # print("Found"+ str(len(smiles))+ "smiles!")
+            for (f_x, f_y, f_w, f_h) in smiles:
+                cv2.rectangle(face_color, (f_x, f_y), (f_x+f_w, f_y+f_h), (255, 0, 0), 1)
+
+            if len(smiles)>0:
                 cv2.putText(
-                    face_color, 
-                    "Found {} smiles".format(str(len(smiles))), 
+                    frame, 
+                    "Smile lv{}".format(str(len(smiles))), 
                     (x,y), 
                     cv2.FONT_HERSHEY_PLAIN, 
                     2, 
                     (0,200,0),
-                    2
+                    2,
+                    cv2.LINE_AA,
+                    False
                 )
-                cv2.rectangle(face_color, (x, y), (x+w, y+h), (255, 0, 0), 1)
-            if len(smiles)>0:
+
+            # Smile lv2
+            if len(smiles)>1:
                 cv2.imwrite("output/face_{}.png".format(datetime.datetime.now().strftime("%Y%m%d%H%M%S")), face_color)
 
         # frameを戻り値として返す
