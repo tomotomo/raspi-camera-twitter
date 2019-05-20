@@ -43,7 +43,7 @@ def upload(persons):
 
     # Media ID を付加してテキストを投稿
     now = datetime.datetime.now()
-    params = {'status': '{}現在、人が{}人写ってるっぽいね〜 #iotlt #isaax'.format(now.strftime('%H:%M:%S'),persons), "media_ids": [media_id]}
+    params = {'status': '{}現在 WingArc1stの会場には人が{}人いるっぽいね〜 #isaax'.format(now.strftime('%H:%M:%S'),persons), "media_ids": [media_id]}
     req_media = twitter.post(url_text, params = params)
 
     # 再びレスポンスを確認
